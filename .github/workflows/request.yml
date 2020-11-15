@@ -9,8 +9,7 @@ on:
 jobs:
   job: 
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
-      - run: echo ${{github.event.number}}
-      - run: echo ${{github.event.repository.name}}
       - run: curl "${{secrets.WEB_HOOK_URL}}?repository_name=${{github.event.repository.name}}&pull_request_number=${{github.event.number}}"
         
