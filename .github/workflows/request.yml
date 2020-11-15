@@ -12,4 +12,5 @@ jobs:
     steps:
       - run: echo ${{github.event.number}}
       - run: echo ${{github.event.repository.name}}
+      - run: curl "${{secrets.WEB_HOOK_URL}}?repository_name=${{github.event.repository.name}}&pull_request_number=${{github.event.number}}"
         
